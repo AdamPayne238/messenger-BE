@@ -1,5 +1,7 @@
 const server = require('./api/server')
 
-const port = process.env.PORT || 6000
+require('dotenv').config()
 
-server.listen(port, () => console.log(`\n** No Errors on Port ${port} **`))
+const PORT = process.env.PORT || 6000
+
+server.listen(PORT, () => console.log(`\n** No Errors on Port ${PORT} **`))
