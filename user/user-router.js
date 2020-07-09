@@ -1,8 +1,8 @@
 const router = require('express').Router()
-const User = require('./diner-model')
+const User = require('./user-model')
 
 // require restricted middleware when completed
-// const restricted = require('')
+// const restricted = require('../auth/restricted-middleware')
 
 // Check Roles
 function checkRoles(roles){
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     .then(user => {
         res.json(user)
     })
-    .catch(err => res.send(err))
+    .catch(err => console.log(err))
 })
 
 // GET by ID
@@ -41,19 +41,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-// POST
-router.post('/', (req, res) => {
-    const userData = req.body
-
-    User.add(userData)
-    .then(user => {
-        res.status(201).json(user)
-    })
-    .catch(err => {
-        res.status(500).json({ message: 'Failed to create new User'})
-    })
-})
-
+// PUT AND DELETE SHOULD ONLY BE ALLOWED BY ADMIN (for now)
 // PUT
 router.put('/:id', (req, res) => {
     const { id } = req.params

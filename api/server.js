@@ -4,6 +4,7 @@ const configureMiddleware = require('./configure-middleware')
 const server = express()
 
 configureMiddleware(server)
+
 server.use('/api', apiRouter)
 
 module.exports = server
